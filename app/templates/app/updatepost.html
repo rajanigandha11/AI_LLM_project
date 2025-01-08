@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+         background: url("{% static 'img/bg-about-img.png' %}") no-repeat center center fixed;
+          background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+       
+    }
+    .update-container {
+        width: 90%;
+        max-width: 600px;
+        padding: 30px;
+        background: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 12px;
+    }
+    h3 {
+        color: #333;
+    }
+</style>
+
+<div class="update-container">
+    <h3 class="mb-4">Dashboard / Update Post</h3>
+    
+    {% if messages %}
+        {% for msg in messages %}
+            <p {% if msg.tags %} class="alert alert-{{ msg.tags }} mb-4" {% endif %}>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex justify-content-between">
+            <input type="submit" value="Update" class="btn btn-success rounded-pill">
+            <a href="{% url 'dashboard' %}" class="btn btn-danger rounded-pill">Cancel</a>
+        </div>
+        {% if form.non_field_errors %}
+            <p class="alert alert-danger my-3">{{ form.non_field_errors }}</p>
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}
