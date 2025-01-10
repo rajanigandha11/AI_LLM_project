@@ -140,5 +140,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AWS_ACCESS_KEY_ID =  os.getenv('AKIAS2VS4AYUN46FZBGR')
+AWS_SECRET_ACCESS_KEY =  os.getenv('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')
+AWS_STORAGE_BUCKET_NAME = 'newdb1'
+AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_S3_REGION_NAME = 'Asia Pacific (Mumbai) ap-south-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL =  None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
